@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="container" style="width: 70%">
+  <div class="card text-center">
+  <div class="card-header">
+    The restaurant is:
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%=@restaurant.name  %></h5>
+    <p class="card-text">Id: <%= @restaurant.id  %></p>
+              <p class="card-text">Phone number: <%= @restaurant.phone_number  %></p>
+              <p class="card-text">Address: <%= @restaurant.address  %></p>
+              <p class="card-text">Category: <%= @restaurant.category  %></p>
+    <%= link_to 'All restaurants', restaurants_path, class:"btn btn-primary" %>
+    <%= link_to "Delete #{@restaurant.name}",
+            restaurant_path(@restaurant),
+            class:"btn btn-danger",
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+    <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
+  </div>
+  <div class="card-footer text-muted">
+some text  </div>
+</div>
+</div>
+
+</div>

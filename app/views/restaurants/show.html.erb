@@ -11,6 +11,7 @@
               <p class="card-text">Address: <%= @restaurant.address  %></p>
               <p class="card-text">Category: <%= @restaurant.category  %></p>
     <%= link_to 'All restaurants', restaurants_path, class:"btn btn-primary" %>
+    <%= link_to 'Leave a review', new_restaurant_review_path(@restaurant), class:"btn btn-primary" %>
     <%= link_to "Delete #{@restaurant.name}",
             restaurant_path(@restaurant),
             class:"btn btn-danger",
@@ -18,8 +19,21 @@
             data: { confirm: "Are you sure?" } %>
     <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
   </div>
-  <div class="card-footer text-muted">
-some text  </div>
+<div class="card-footer text-muted">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">The review is is <b><%= review.id %></b> the review is <b><%= review.content %></b> And rating is <b><%= review.rating  %></b>
+    <%= review.content %>
+      <%= link_to "Remove",
+                  review_path(review),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" }, class:"btn btn-danger" %>
+    </li>
+
+
+    <% end %>
+ </div>
+
+</div>
 </div>
 </div>
 
